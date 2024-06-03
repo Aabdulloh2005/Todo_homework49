@@ -7,10 +7,12 @@ class NotesWidgets extends StatelessWidget {
   final NotesModel model;
   final int i;
   final NotesController notesController;
-  const NotesWidgets({
+  VoidCallback onDeleted;
+  NotesWidgets({
     required this.model,
     required this.i,
     required this.notesController,
+    required this.onDeleted,
     super.key,
   });
 
@@ -39,6 +41,7 @@ class NotesWidgets extends StatelessWidget {
                 builder: (context) {
                   return DeleteDialog(onDeleted: () {
                     notesController.deletePlan(i);
+                    onDeleted();
                   });
                 },
               );

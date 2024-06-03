@@ -114,6 +114,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                           itemBuilder: (context, i) {
                             final notes = notesController.notesList;
                             return NotesWidgets(
+                              onDeleted: onEdited,
                               model: notes[i],
                               i: i,
                               notesController: notesController,
