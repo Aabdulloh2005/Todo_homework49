@@ -160,25 +160,27 @@ class _ToDoScreenState extends State<ToDoScreen> {
           ][_selectedIndex],
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        onPressed: () async {
-          Map<String, dynamic>? data = await showDialog(
-            context: context,
-            builder: (context) {
-              return AddDialog();
-            },
-          );
-          if (data != null) {
-            todoController.add(data["title"], data["date"]);
-          }
-          setState(() {});
-        },
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
+      floatingActionButton: _selectedIndex == 0
+          ? FloatingActionButton(
+              backgroundColor: Colors.blue,
+              onPressed: () async {
+                Map<String, dynamic>? data = await showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AddDialog();
+                  },
+                );
+                if (data != null) {
+                  todoController.add(data["title"], data["date"]);
+                }
+                setState(() {});
+              },
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           _selectedIndex = value;
