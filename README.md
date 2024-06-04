@@ -1,16 +1,4 @@
-# homework49_todo
 
-A new Flutter project.
 
-## Getting Started
+https://github.com/Aabdulloh2005/Todo_homework49/assets/153055444/016dc3e3-3c8b-41b4-91ef-d9a6161c4c73
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
