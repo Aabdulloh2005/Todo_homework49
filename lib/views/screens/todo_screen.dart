@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:homework49_todo/controllers/notes_controller.dart';
 import 'package:homework49_todo/controllers/todo_controller.dart';
 import 'package:homework49_todo/utils/app_constrants.dart';
+import 'package:homework49_todo/views/screens/plans_screen.dart';
 import 'package:homework49_todo/views/screens/profile_screen.dart';
 import 'package:homework49_todo/views/widgets/add_dialog.dart';
 import 'package:homework49_todo/views/widgets/custom_drawer.dart';
-import 'package:homework49_todo/views/widgets/notes_widgets.dart';
-import 'package:homework49_todo/views/widgets/plan_widget.dart';
 
 class ToDoScreen extends StatefulWidget {
   final ValueChanged<bool> onThemeChanged;
@@ -24,27 +23,17 @@ class ToDoScreen extends StatefulWidget {
 
 class _ToDoScreenState extends State<ToDoScreen> {
   int _selectedIndex = 0;
-  bool showTodos = true;
   TodoController todoController = TodoController();
   NotesController notesController = NotesController();
 
-  void onDone(int i) {
-    todoController.todoList[i].checkDone =
-        !todoController.todoList[i].checkDone;
-    setState(() {});
-  }
-
-  void onDeleted(int i) {
-    todoController.deletePlan(i);
-    setState(() {});
-  }
-
-  void onEdited() {
-    setState(() {});
-  }
+  List lst = ["Todos", "Notes"];
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> navigators = [
+      PlansScreen(todoController: todoController),
+      NotesScreen(notesController: notesController),
+    ];
     int counter = todoController.counter();
     return Scaffold(
       appBar: AppBar(
@@ -73,54 +62,34 @@ class _ToDoScreenState extends State<ToDoScreen> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          showTodos = true;
-                        });
-                      },
-                      child: const Text("Show Todos"),
-                    ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          showTodos = false;
-                        });
-                      },
-                      child: const Text("Show Notes"),
-                    ),
-                  ],
-                ),
                 Expanded(
-                  child: showTodos
-                      ? ListView.builder(
-                          padding: const EdgeInsets.all(15),
-                          itemCount: todoController.todoList.length,
-                          itemBuilder: (context, i) {
-                            return PlanWidget(
-                              model: todoController.todoList[i],
-                              onDone: () => onDone(i),
-                              onDeleted: () => onDeleted(i),
-                              onEdited: onEdited,
-                            );
-                          },
-                        )
-                      : ListView.builder(
-                          itemCount: notesController.notesList.length,
-                          itemBuilder: (context, i) {
-                            final notes = notesController.notesList;
-                            return NotesWidgets(
-                              onDeleted: onEdited,
-                              model: notes[i],
-                              i: i,
-                              notesController: notesController,
-                            );
-                          },
+                  child: GridView.builder(
+                    padding: EdgeInsets.all(15),
+                    itemCount: lst.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 20, crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) => navigators[index]),
+                          );
+                        },
+                        child: Card(
+                          color: Colors.white.withOpacity(0.01),
+                          child: Center(
+                            child: Text(
+                              lst[index],
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 30),
+                            ),
+                          ),
                         ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

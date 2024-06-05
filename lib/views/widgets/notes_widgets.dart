@@ -7,8 +7,8 @@ class NotesWidgets extends StatelessWidget {
   final NotesModel model;
   final int i;
   final NotesController notesController;
-  VoidCallback onDeleted;
-  NotesWidgets({
+  final VoidCallback onDeleted;
+  const NotesWidgets({
     required this.model,
     required this.i,
     required this.notesController,
@@ -34,7 +34,7 @@ class NotesWidgets extends StatelessWidget {
           ),
           subtitle: Text(model.subtitle),
           trailing: IconButton(
-            icon: Icon(Icons.delete, color: Colors.red),
+            icon: const Icon(Icons.delete, color: Colors.red),
             onPressed: () {
               showDialog(
                 context: context,

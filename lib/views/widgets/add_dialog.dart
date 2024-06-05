@@ -4,8 +4,8 @@ import 'package:homework49_todo/models/todo.dart';
 import 'package:intl/intl.dart';
 
 class AddDialog extends StatefulWidget {
-  TodoModel? model;
-  AddDialog({this.model, super.key});
+  final TodoModel? model;
+  const AddDialog({this.model, super.key});
 
   @override
   State<AddDialog> createState() => _AddDialogState();
@@ -67,7 +67,7 @@ class _AddDialogState extends State<AddDialog> {
             Text(
               textAlign: TextAlign.center,
               "Day: $_formattedDate",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

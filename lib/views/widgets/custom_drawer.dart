@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homework49_todo/views/screens/settings.dart';
+import 'package:homework49_todo/views/screens/settings_screen.dart';
 import 'package:homework49_todo/views/screens/todo_screen.dart';
 
 class CustomDrawer extends StatelessWidget {

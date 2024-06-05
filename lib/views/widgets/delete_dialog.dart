@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DeleteDialog extends StatelessWidget {
-  VoidCallback onDeleted;
-  DeleteDialog({required this.onDeleted, super.key});
+  final VoidCallback onDeleted;
+  const DeleteDialog({required this.onDeleted, super.key});
 
   @override
   Widget build(BuildContext context) {

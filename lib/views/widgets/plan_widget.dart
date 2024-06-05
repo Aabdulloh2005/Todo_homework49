@@ -4,12 +4,12 @@ import 'package:homework49_todo/views/widgets/add_dialog.dart';
 import 'package:homework49_todo/views/widgets/delete_dialog.dart';
 
 class PlanWidget extends StatelessWidget {
-  TodoModel model;
-  VoidCallback onDone;
-  VoidCallback onDeleted;
-  VoidCallback onEdited;
+  final TodoModel model;
+  final VoidCallback onDone;
+  final VoidCallback onDeleted;
+  final VoidCallback onEdited;
 
-  PlanWidget(
+  const PlanWidget(
       {required this.model,
       required this.onEdited,
       required this.onDone,
